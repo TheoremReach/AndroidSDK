@@ -31,7 +31,7 @@ Add the following to the repositories closure of the app's module `build.gralde`
 
   #### Manual:
 
-  Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.3.0.0.7.aar** to the lib folder
+  Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.3.0.0.7.aar** to the lib folder. Ensure that Google Plays Ads are enabled in your app.
 
 ## Other platforms:
 
