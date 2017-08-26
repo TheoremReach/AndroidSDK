@@ -6,16 +6,17 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 import theoremreach.com.theoremreach.TheoremReach;
 import theoremreach.com.theoremreach.TheoremReachRewardListener;
+import theoremreach.com.theoremreach.TheoremReachSurveyAvailableListener;
 import theoremreach.com.theoremreach.TheoremReachSurveyListener;
 
-public class MainActivity extends AppCompatActivity implements TheoremReachRewardListener, TheoremReachSurveyListener{
+public class MainActivity extends AppCompatActivity implements TheoremReachRewardListener, TheoremReachSurveyListener, TheoremReachSurveyAvailableListener {
 
     Button takeSurveyButton;
     private final String TAG = "TheoremReach";
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
         //set reward and survey status listeners
         TheoremReach.getInstance().setTheoremReachRewardListener(this);
         TheoremReach.getInstance().setTheoremReachSurveyListener(this);
+        TheoremReach.getInstance().setTheoremReachSurveyAvailableListener(this);
 
         takeSurveyButton = (Button) findViewById(R.id.takeSurveyButton);
         takeSurveyButton.setOnClickListener(new View.OnClickListener() {
@@ -101,5 +103,10 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
     @Override
     public void onRewardCenterOpened() {
         Log.d(TAG, "onRewardCenterOpened");
+    }
+
+    @Override
+    public void theoremreachSurveyAvailable(boolean surveyAvailable) {
+        Log.d(TAG, "TheoremReach Survey Available: " + surveyAvailable);
     }
 }
