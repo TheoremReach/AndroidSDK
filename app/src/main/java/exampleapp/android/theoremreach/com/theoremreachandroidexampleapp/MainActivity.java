@@ -40,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
         //initialize TheoremReach
         TheoremReach.initWithApiKeyAndUserIdAndActivityContext("9148c4176f36f5302eb0a56695eb","TESTUSERID", this);
 
+        TheoremReach.getInstance().enableDebugMode(true);
+        
         //set reward and survey status listeners
         TheoremReach.getInstance().setTheoremReachRewardListener(this);
         TheoremReach.getInstance().setTheoremReachSurveyListener(this);
@@ -50,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
             @Override
             public void onClick(View v) {
                 if (TheoremReach.getInstance().isSurveyAvailable()) {
-                    TheoremReach.getInstance().enableDebugMode(true);
+
                     TheoremReach.getInstance().showRewardCenter();
                 }
             }
