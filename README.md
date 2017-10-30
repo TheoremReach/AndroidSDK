@@ -3,6 +3,10 @@ TheoremReach Android SDK v3.1.5
 
 For additional information, please see the [TheoremReach Android SDK Integration](https://theoremreach.com/docs/android).
 
+## v3.1.5
+- New Debug Mode for easier integration and callback troubleshooting!
+- General bug fixing
+
 ## Setup
 
 Create an [app](https://theoremreach.com/developer/apps) and grab your API Token.
