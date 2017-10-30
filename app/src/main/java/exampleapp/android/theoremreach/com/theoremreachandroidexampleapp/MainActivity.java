@@ -50,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
             @Override
             public void onClick(View v) {
                 if (TheoremReach.getInstance().isSurveyAvailable()) {
+                    TheoremReach.getInstance().enableDebugMode(true);
                     TheoremReach.getInstance().showRewardCenter();
                 }
             }
