@@ -1,12 +1,12 @@
 # TheoremReach Android-SDK
-TheoremReach Android SDK v3.1.7
+TheoremReach Android SDK v3.1.8
 
 For additional information, please see the [TheoremReach Android SDK Integration](https://theoremreach.com/docs/android).
 
-## v3.1.7
-- Support for Kindle!
-- Improved look and navigation tools
-- General bug fixing
+## v3.1.8
+- Moments Beta Released
+- Improved debug mode for testing
+- Reset profiler for testing
 
 ## Setup
 
@@ -27,7 +27,7 @@ Add the following to the repositories closure of the app's module `build.gralde`
   ```groovy
     dependencies {
       compile 'com.google.android.gms:play-services-ads:10.2.1'
-      compile 'com.theoremreach:theoremreach:3.1.7'
+      compile 'com.theoremreach:theoremreach:3.1.8'
       ...
      }
   ```
@@ -36,7 +36,7 @@ Add the following to the repositories closure of the app's module `build.gralde`
 
   #### Manual:
 
-  Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.3.1.7.aar** to the lib folder. Ensure that Google Plays Ads are enabled in your app.
+  Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.3.1.8.aar** to the lib folder. Ensure that Google Plays Ads are enabled in your app.
 
 ## Other platforms:
 
