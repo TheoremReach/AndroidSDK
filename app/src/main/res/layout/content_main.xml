@@ -13,9 +13,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Button android:id="@+id/showMomentSurvey"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:text="Open Moment Survey!"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
         <Button android:id="@+id/takeSurveyButton"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
+                android:layout_below="@id/showMomentSurvey"
                 android:text="Take Surveys!"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />

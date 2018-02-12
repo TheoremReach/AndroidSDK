@@ -9,13 +9,15 @@ import android.view.View;
 import android.widget.Button;
 
 import theoremreach.com.theoremreach.TheoremReach;
+import theoremreach.com.theoremreach.TheoremReachMomentListener;
 import theoremreach.com.theoremreach.TheoremReachRewardListener;
 import theoremreach.com.theoremreach.TheoremReachSurveyAvailableListener;
 import theoremreach.com.theoremreach.TheoremReachSurveyListener;
 
-public class MainActivity extends AppCompatActivity implements TheoremReachRewardListener, TheoremReachSurveyListener, TheoremReachSurveyAvailableListener {
+public class MainActivity extends AppCompatActivity implements TheoremReachRewardListener, TheoremReachSurveyListener, TheoremReachSurveyAvailableListener, TheoremReachMomentListener {
 
     Button takeSurveyButton;
+    Button momentSurveyButton;
 
     private final String TAG = "TheoremReach";
 
@@ -27,14 +29,16 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
         setSupportActionBar(toolbar);
 
         //initialize TheoremReach
-        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("9148c4176f36f5302eb0a56695eb","TESTUSERID", this);
+        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("159bf642ba2e0555d078da4a5a4e", "TESTUSERID", this);
 
         TheoremReach.getInstance().enableDebugMode(true);
+        TheoremReach.getInstance().enableMoments(true);
 
         //set reward and survey status listeners
         TheoremReach.getInstance().setTheoremReachRewardListener(this);
         TheoremReach.getInstance().setTheoremReachSurveyListener(this);
         TheoremReach.getInstance().setTheoremReachSurveyAvailableListener(this);
+        TheoremReach.getInstance().setTheoremReachMomentListener(this);
 
         final Activity context = this;
 
@@ -44,6 +48,16 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
             public void onClick(View v) {
                 if (TheoremReach.getInstance().isSurveyAvailable()) {
                     TheoremReach.getInstance().showRewardCenter();
+                }
+            }
+        });
+
+        momentSurveyButton = (Button) findViewById(R.id.showMomentSurvey);
+        momentSurveyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (TheoremReach.getInstance().isSurveyAvailable(30)) {
+                    TheoremReach.getInstance().showMomentSurvey();
                 }
             }
         });
@@ -81,5 +95,30 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
     @Override
     public void theoremreachSurveyAvailable(boolean surveyAvailable) {
         Log.d(TAG, "TheoremReach Survey Available: " + surveyAvailable);
+    }
+
+    @Override
+    public void onMomentSurveyOpened() {
+        Log.d(TAG, "onMomentSurveyOpened");
+    }
+
+    @Override
+    public void onMomentSurveyClosed() {
+        Log.d(TAG, "onMomentSurveyClosed");
+    }
+
+    @Override
+    public void onMomentSurveyReceived(int i) {
+        Log.d(TAG, "onMomentSurveyReceived: " + i);
+    }
+
+    @Override
+    public void onMomentSurveyCompleted() {
+        Log.d(TAG, "onMomentSurveyCompleted");
+    }
+
+    @Override
+    public void onMomentSurveyNotEligible() {
+        Log.d(TAG, "onMomentSurveyNotEligible");
     }
 }
