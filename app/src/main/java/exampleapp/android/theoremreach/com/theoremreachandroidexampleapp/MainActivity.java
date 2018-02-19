@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
         setSupportActionBar(toolbar);
 
         //initialize TheoremReach
-        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("159bf642ba2e0555d078da4a5a4e", "TESTUSERID", this);
+        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("40cdb7704cacbaeb4c4e491f4ece", "ANDROID_TEST_ID", this);
 
         TheoremReach.getInstance().enableDebugMode(true);
         TheoremReach.getInstance().enableMoments(true);
