@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
         //initialize TheoremReach
         TheoremReach.initWithApiKeyAndUserIdAndActivityContext("40cdb7704cacbaeb4c4e491f4ece", "ANDROID_TEST_ID", this);
 
-        TheoremReach.getInstance().enableDebugMode(true);
+//        TheoremReach.getInstance().enableDebugMode(true);
         TheoremReach.getInstance().enableMoments(true);
 
         //set reward and survey status listeners
