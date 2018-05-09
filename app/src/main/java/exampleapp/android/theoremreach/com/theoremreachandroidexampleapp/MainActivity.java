@@ -1,5 +1,6 @@
 package exampleapp.android.theoremreach.com.theoremreachandroidexampleapp;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +19,10 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
 
     private final String TAG = "TheoremReach";
 
+    private final String AP_KEY = "9148c4176f36f5302eb0a56695eb";
+    private String USER_ID="12757";
+    private Activity mActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +31,10 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
         setSupportActionBar(toolbar);
 
         //initialize TheoremReach
-        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("40cdb7704cacbaeb4c4e491f4ece", "ANDROID_TEST_ID", this);
+//        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("40cdb7704cacbaeb4c4e491f4ece", "ANDROID_TEST_ID", this);
+
+        mActivity = MainActivity.this;
+        TheoremReach.initWithApiKeyAndUserIdAndActivityContext(AP_KEY, USER_ID, mActivity);
 
         //customize navigation header
         TheoremReach.getInstance().setNavigationBarText("Demo App");
@@ -66,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
     @Override
     public void onReward(int i) {
         Log.d(TAG, "onReward: " + i);
+//        Toast.makeText(mActivity, "OnRewarded " + i, Toast.LENGTH_LONG).show();
+
     }
 
     @Override
