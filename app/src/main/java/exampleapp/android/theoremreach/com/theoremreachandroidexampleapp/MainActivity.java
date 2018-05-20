@@ -1,6 +1,5 @@
 package exampleapp.android.theoremreach.com.theoremreachandroidexampleapp;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -9,19 +8,16 @@ import android.view.View;
 import android.widget.Button;
 
 import theoremreach.com.theoremreach.TheoremReach;
+import theoremreach.com.theoremreach.TheoremReachMomentListener;
 import theoremreach.com.theoremreach.TheoremReachRewardListener;
 import theoremreach.com.theoremreach.TheoremReachSurveyAvailableListener;
 import theoremreach.com.theoremreach.TheoremReachSurveyListener;
 
-public class MainActivity extends AppCompatActivity implements TheoremReachRewardListener, TheoremReachSurveyListener, TheoremReachSurveyAvailableListener {
+public class MainActivity extends AppCompatActivity implements TheoremReachRewardListener, TheoremReachSurveyListener, TheoremReachSurveyAvailableListener, TheoremReachMomentListener {
 
     Button takeSurveyButton;
 
     private final String TAG = "TheoremReach";
-
-    private final String AP_KEY = "9148c4176f36f5302eb0a56695eb";
-    private String USER_ID="12757";
-    private Activity mActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +27,20 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
         setSupportActionBar(toolbar);
 
         //initialize TheoremReach
-//        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("40cdb7704cacbaeb4c4e491f4ece", "ANDROID_TEST_ID", this);
-
-        mActivity = MainActivity.this;
-        TheoremReach.initWithApiKeyAndUserIdAndActivityContext(AP_KEY, USER_ID, mActivity);
+        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("40cdb7704cacbaeb4c4e491f4ece", "ANDROID_TEST_ID", this);
 
         //customize navigation header
         TheoremReach.getInstance().setNavigationBarText("Demo App");
-        TheoremReach.getInstance().setNavigationBarColor("#17b4b3");
+        TheoremReach.getInstance().setNavigationBarColor("#211548");
         TheoremReach.getInstance().setNavigationBarTextColor("#FFFFFF");
 
         //set reward and survey status listeners
         TheoremReach.getInstance().setTheoremReachRewardListener(this);
         TheoremReach.getInstance().setTheoremReachSurveyListener(this);
         TheoremReach.getInstance().setTheoremReachSurveyAvailableListener(this);
+        TheoremReach.getInstance().setTheoremReachMomentListener(this);
+
+        TheoremReach.getInstance().enableMoments(true);
 
         takeSurveyButton = (Button) findViewById(R.id.takeSurveyButton);
         takeSurveyButton.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +50,11 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
                 if (TheoremReach.getInstance().isSurveyAvailable()) {
                     TheoremReach.getInstance().showRewardCenter();
                 }
+
+                // For Moments
+//                if (TheoremReach.getInstance().isSurveyAvailable(15)) {
+//                    TheoremReach.getInstance().showMomentSurvey();
+//                }
             }
         });
 
@@ -74,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
     @Override
     public void onReward(int i) {
         Log.d(TAG, "onReward: " + i);
-//        Toast.makeText(mActivity, "OnRewarded " + i, Toast.LENGTH_LONG).show();
 
     }
 
@@ -93,4 +93,30 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
         Log.d(TAG, "TheoremReach Survey Available: " + surveyAvailable);
     }
 
+    @Override
+    public void onMomentSurveyOpened() {
+        Log.d(TAG, "onMomentSurveyOpened");
+
+    }
+
+    @Override
+    public void onMomentSurveyClosed() {
+        Log.d(TAG, "onMomentSurveyClosed");
+
+    }
+
+    @Override
+    public void onMomentSurveyReceived(int surveyLength) {
+        Log.d(TAG, "onMomentSurveyReceived: " + surveyLength);
+    }
+
+    @Override
+    public void onMomentSurveyCompleted() {
+        Log.d(TAG, "onMomentSurveyCompleted");
+    }
+
+    @Override
+    public void onMomentSurveyNotEligible() {
+        Log.d(TAG, "onMomentSurveyNotEligible");
+    }
 }

@@ -1,9 +1,9 @@
 # TheoremReach Android-SDK
-TheoremReach Android SDK v3.2.5
+TheoremReach Android SDK v3.2.6
 
 For additional information, please see the [TheoremReach Android SDK Integration](https://theoremreach.com/docs/android).
 
-## v3.2.5
+## v3.2.6
 - Fixed error in onReceivedSslError 
 
 ## Setup
@@ -25,7 +25,7 @@ Add the following to the repositories closure of the app's module `build.gralde`
   ```groovy
     dependencies {
       compile 'com.google.android.gms:play-services-ads:10.2.1'
-      compile 'com.theoremreach:theoremreach:3.2.5'
+      compile 'com.theoremreach:theoremreach:3.2.6'
       ...
      }
   ```
