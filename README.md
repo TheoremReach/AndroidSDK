@@ -4,7 +4,7 @@ TheoremReach Android SDK v3.3.3
 For additional information, please see the [TheoremReach Android SDK Integration](https://theoremreach.com/docs/android).
 
 ## v3.3.3
-- Fixed error in onReceivedSslError 
+- Fixed cleartext error that can occur on new Pixel devices
 
 ## Setup
 
