@@ -16,8 +16,8 @@ Add the following to the repositories closure of the app's module `build.gralde`
 
   ```groovy
   repositories {
-      jcenter()
       google()
+      jcenter()
       ...
     }
   ```
