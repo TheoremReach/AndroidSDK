@@ -16,8 +16,8 @@ Add the following to the repositories closure of the app's module `build.gralde`
 
   ```groovy
   repositories {
-      jcenter()
       google()
+      jcenter()
       ...
     }
   ```
@@ -26,6 +26,7 @@ Add the following to the repositories closure of the app's module `build.gralde`
   ```groovy
     dependencies {
       implementation 'com.theoremreach:theoremreach:3.3.4'
+      implementation 'com.google.android.gms:play-services-ads:15.0.1'
       ...
      }
   ```
