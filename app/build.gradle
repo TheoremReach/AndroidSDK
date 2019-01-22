@@ -22,7 +22,9 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.android.support:design:27.1.0'
     implementation 'com.android.support:appcompat-v7:27.1.0'
-    implementation 'com.theoremreach:theoremreach:3.3.1'
+//    implementation 'com.theoremreach:theoremreach:3.3.4'
+    implementation 'com.google.android.gms:play-services-ads:15.0.1'
+    implementation (name: 'theoremreach-3.3.4', ext: 'aar')
 //    implementation project(':theoremreach')
 
     testImplementation 'junit:junit:4.12'

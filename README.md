@@ -1,10 +1,10 @@
 # TheoremReach Android-SDK
-TheoremReach Android SDK v3.3.1
+TheoremReach Android SDK v3.3.4
 
 For additional information, please see the [TheoremReach Android SDK Integration](https://theoremreach.com/docs/android).
 
-## v3.3.1
-- Fixed error in onReceivedSslError 
+## v3.3.4
+- New flexibility in header display
 
 ## Setup
 
@@ -25,7 +25,7 @@ Add the following to the repositories closure of the app's module `build.gralde`
 
   ```groovy
     dependencies {
-      implementation 'com.theoremreach:theoremreach:3.3.1'
+      implementation 'com.theoremreach:theoremreach:3.3.4'
       ...
      }
   ```
@@ -34,7 +34,7 @@ Add the following to the repositories closure of the app's module `build.gralde`
 
   #### Manual:
 
-  Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.3.2.7.aar** to the lib folder. Ensure that Google Plays Ads are enabled in your app.
+  Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.3.3.4.aar** to the lib folder. Ensure that Google Plays Ads are enabled in your app.
 
 ## Other platforms:
 
