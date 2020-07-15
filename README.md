@@ -1,5 +1,5 @@
 # TheoremReach Android-SDK
-TheoremReach Android SDK v3.3.5
+TheoremReach Android SDK v3.4.0
 
 For additional information, please see the [TheoremReach Android SDK Integration](https://theoremreach.com/docs/android).
 
@@ -25,17 +25,16 @@ Add the following to the repositories closure of the app's module `build.gralde`
 
   ```groovy
     dependencies {
-      implementation 'com.theoremreach:theoremreach:3.3.5'
-      implementation 'com.google.android.gms:play-services-ads:15.0.1'
+      implementation 'com.theoremreach:theoremreach:3.4.0'
+      implementation 'com.google.android.gms:play-services-ads:19.2.0'
       ...
      }
   ```
 
-  And synch the gradle project files
+  And sync the gradle project files
 
   #### Manual:
-
-  Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.3.3.5.aar** to the lib folder. Ensure that Google Plays Ads are enabled in your app.
+  Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.3.4.0.aar** to the lib folder. Ensure that Google Plays Ads are enabled in your app.
 
 ## Other platforms:
 
@@ -43,4 +42,4 @@ Add the following to the repositories closure of the app's module `build.gralde`
 
 [TheoremReach Unity SDK Integration](https://theoremreach.com/docs/unity)
 
-[TheoremReach Javascript Web SDK Integration](https://theoremreach.com/docs/web)  
+[TheoremReach Javascript Web SDK Integration](https://theoremreach.com/docs/web)
