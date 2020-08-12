@@ -3,18 +3,12 @@ TheoremReach Android SDK v3.4.0
 
 For additional information, please see the [TheoremReach Android SDK Integration](https://theoremreach.com/docs/android).
 
-## v3.4.1
-- Added `showUnityRewardCenter(string placementId);` to support the unity SDK better
-
-## v3.3.5
-- Adding placements for additional flexibility
 
 ## Setup
 
 Create an [app](https://theoremreach.com/developer/apps) and grab your API Token.
 
-#### Download:
-
+### Download:
 Add the following to the repositories closure of the app's module `build.gradle` file
 
   ```groovy
@@ -36,13 +30,22 @@ Add the following to the repositories closure of the app's module `build.gradle`
 
   And sync the gradle project files
 
-  #### Manual:
-  Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.3.4.0.aar** to the lib folder. Ensure that Google Plays Ads are enabled in your app.
+### Manual:
+
+Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.3.4.0.aar** to the lib folder. Ensure that Google Plays Ads are enabled in your app.
+
 
 ## Other platforms:
 
 [TheoremReach iOS SDK Integration](https://theoremreach.com/docs/ios)
-
 [TheoremReach Unity SDK Integration](https://theoremreach.com/docs/unity)
-
 [TheoremReach Javascript Web SDK Integration](https://theoremreach.com/docs/web)
+
+
+## ChangeLog
+
+### v3.4.1
+- Added `showUnityRewardCenter(string placementId);` to support the unity SDK better
+
+### v3.3.5
+- Adding placements for additional flexibility
