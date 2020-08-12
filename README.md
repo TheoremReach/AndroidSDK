@@ -3,6 +3,9 @@ TheoremReach Android SDK v3.4.0
 
 For additional information, please see the [TheoremReach Android SDK Integration](https://theoremreach.com/docs/android).
 
+## v3.4.1
+- Added `showUnityRewardCenter(string placementId);` to support the unity SDK better
+
 ## v3.3.5
 - Adding placements for additional flexibility
 
