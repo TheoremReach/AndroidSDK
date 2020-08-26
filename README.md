@@ -1,5 +1,5 @@
 # TheoremReach Android-SDK
-TheoremReach Android SDK v3.4.0
+TheoremReach Android SDK v3.4.3
 
 For additional information, please see the [TheoremReach Android SDK Integration](https://theoremreach.com/docs/android).
 
@@ -22,7 +22,7 @@ Add the following to the repositories closure of the app's module `build.gradle`
 
   ```groovy
     dependencies {
-      implementation 'com.theoremreachsdk:theoremreach:3.4.0'
+      implementation 'com.theoremreach:theoremreach:3.4.3'
       implementation 'com.google.android.gms:play-services-ads:19.2.0'
       ...
      }
@@ -32,7 +32,7 @@ Add the following to the repositories closure of the app's module `build.gradle`
 
 ### Manual:
 
-Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.3.4.0.aar** to the lib folder. Ensure that Google Plays Ads are enabled in your app.
+Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.3.4.3.aar** to the lib folder. Ensure that Google Plays Ads are enabled in your app.
 
 
 ## Other platforms:
@@ -43,6 +43,9 @@ Download the latest version of the [TheoremReach Android SDK](https://github.com
 
 
 ## ChangeLog
+
+### v3.4.3
+- Removed Google Ads requirement
 
 ### v3.4.1
 - Added `showUnityRewardCenter(string placementId);` to support the unity SDK better
