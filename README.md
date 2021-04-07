@@ -1,6 +1,4 @@
 # TheoremReach Android-SDK
-TheoremReach Android SDK v3.4.6
-
 For additional information, please see the [TheoremReach Android SDK Integration](https://theoremreach.com/docs/android).
 
 
