@@ -12,7 +12,7 @@ Add the following to the repositories closure of the app's module `build.gradle`
   ```groovy
   repositories {
       google()
-      jcenter()
+      mavenCentral()
       ...
     }
   ```
