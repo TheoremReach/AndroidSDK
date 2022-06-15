@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     defaultConfig {
         applicationId "exampleapp.android.theoremreach.com.theoremreachandroidexampleapp"
         minSdkVersion 16
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
     }
@@ -24,8 +24,8 @@ dependencies {
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.1.0'
 
     implementation 'com.google.android.material:material:1.1.0'
-    implementation 'com.google.android.gms:play-services-ads:19.2.0'
+    implementation 'com.google.android.gms:play-services-ads:20.1.0'
 
-    implementation 'com.theoremreach:theoremreach:3.4.6'
-//    implementation project(':theoremreach')
+//    implementation 'com.theoremreach:theoremreach:3.4.6'
+    implementation project(':theoremreach')
 }
