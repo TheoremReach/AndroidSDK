@@ -49,13 +49,8 @@ public class MainActivity extends Activity implements TheoremReachRewardListener
             }
         });
 
-        TheoremReach.getInstance().showRewardCenter();
+//        TheoremReach.getInstance().showRewardCenter();
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
     }
 
     @Override
