@@ -34,7 +34,7 @@ public class MainActivity extends Activity implements TheoremReachRewardListener
         TheoremReach.getInstance().setTheoremReachRewardListener(this);
         TheoremReach.getInstance().setTheoremReachSurveyListener(this);
         TheoremReach.getInstance().setTheoremReachSurveyAvailableListener(this);
-        TheoremReach.getInstance().disableAppButtons(true);
+//        TheoremReach.getInstance().disableAppButtons(true);
 
         takeSurveyButton = (Button) findViewById(R.id.takeSurveyButton);
         takeSurveyButton.setOnClickListener(new View.OnClickListener() {
