@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import theoremreach.com.theoremreach.TheoremReach;
 import theoremreach.com.theoremreach.TheoremReachRewardListener;
 import theoremreach.com.theoremreach.TheoremReachSurveyAvailableListener;
 import theoremreach.com.theoremreach.TheoremReachSurveyListener;
 
-public class MainActivity extends Activity implements TheoremReachRewardListener, TheoremReachSurveyListener, TheoremReachSurveyAvailableListener {
+public class MainActivity extends AppCompatActivity implements TheoremReachRewardListener, TheoremReachSurveyListener, TheoremReachSurveyAvailableListener {
 
     Button takeSurveyButton;
 
