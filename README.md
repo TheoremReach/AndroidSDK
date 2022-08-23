@@ -22,6 +22,7 @@ Add the following to the repositories closure of the app's module `build.gradle`
     dependencies {
       implementation 'com.theoremreach:theoremreach:3.5.0'
       implementation 'com.google.android.gms:play-services-ads:21.0.0'
+      implementation 'androidx.appcompat:appcompat:1.4.2'
       ...
      }
   ```
