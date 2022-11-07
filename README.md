@@ -43,6 +43,9 @@ Download the latest version of the [TheoremReach Android SDK](https://github.com
 
 ## ChangeLog
 
+### v.3.5.1
+- Added getIsSurveyAvailable
+
 ### v.3.5.0
 - Better mobile network support and removing READ_PHONE_STATE permission requirement
 
