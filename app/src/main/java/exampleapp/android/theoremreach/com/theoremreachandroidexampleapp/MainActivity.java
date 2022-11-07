@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
         setContentView(R.layout.activity_main);
 
         //initialize TheoremReach
-        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("40cdb7704cacbaeb4c4e491f4ece", "ANDROID_TEST_ID", this);
+        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("5b1ef459bfc7c8e4147b766eced6", "ANDROID_TEST_ID", this);
 
         //customize navigation header
         TheoremReach.getInstance().setNavigationBarText("Demo App");
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
         takeSurveyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TheoremReach.getInstance().isSurveyAvailable()) {
+                if (TheoremReach.getInstance().getIsSurveyAvailable()) {
                     // for second placement to earn Gems as well as Tokens
 //                    TheoremReach.getInstance().showRewardCenter("66cb0225-3af3-4d63-8920-7a7a9e43abb2");
                     TheoremReach.getInstance().showRewardCenter();
