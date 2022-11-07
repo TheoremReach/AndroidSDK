@@ -20,7 +20,7 @@ Add the following to the repositories closure of the app's module `build.gradle`
 
   ```groovy
     dependencies {
-      implementation 'com.theoremreach:theoremreach:3.5.0'
+      implementation 'com.theoremreach:theoremreach:x.x.x'
       implementation 'com.google.android.gms:play-services-ads:21.0.0'
       implementation 'androidx.appcompat:appcompat:1.4.2'
       ...
@@ -31,7 +31,7 @@ Add the following to the repositories closure of the app's module `build.gradle`
 
 ### Manual:
 
-Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.3.5.0.aar** to the lib folder. Ensure that Google Plays Ads are enabled in your app.
+Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.x.x.x.aar** to the lib folder. Ensure that Google Plays Ads are enabled in your app.
 
 
 ## Other platforms:
