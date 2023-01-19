@@ -43,6 +43,9 @@ Download the latest version of the [TheoremReach Android SDK](https://github.com
 
 ## ChangeLog
 
+### v.3.5.2
+- Fix issue with redirecting to offers
+
 ### v.3.5.1
 - Added getIsSurveyAvailable
 
