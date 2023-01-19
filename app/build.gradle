@@ -22,6 +22,17 @@ android {
 }
 
 dependencies {
-//    implementation files('/Users/andykeller/Code/TheoremReach-Android-SDK/theoremreach/build/outputs/aar/theoremreach-3.5.1.aar')
-    implementation 'com.theoremreach:theoremreach:3.5.1'
+    implementation 'androidx.preference:preference:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'androidx.appcompat:appcompat-resources:1.4.2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
+
+    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'com.google.android.gms:play-services-base:18.1.0'
+    implementation 'com.google.android.gms:play-services-auth:20.2.0'
+    implementation 'com.google.android.gms:play-services-ads:21.0.0'
+    implementation 'com.google.android.play:review:2.0.0'
+//    implementation files('/Users/andykeller/Code/TheoremReach-Android-SDK/theoremreach/build/outputs/aar/theoremreach-3.5.2.aar')
+    implementation 'com.theoremreach:theoremreach:3.5.2'
 }
