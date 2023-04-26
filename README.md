@@ -42,6 +42,8 @@ Download the latest version of the [TheoremReach Android SDK](https://github.com
 
 
 ## ChangeLog
+### v.3.5.3
+- Better third party login support
 
 ### v.3.5.2
 - Fix issue with redirecting to offers
