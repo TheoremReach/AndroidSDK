@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion 34
     defaultConfig {
         applicationId "exampleapp.android.theoremreach.com.theoremreachandroidexampleapp"
         minSdkVersion 23
-        targetSdkVersion 32
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
     }
@@ -34,5 +34,5 @@ dependencies {
     implementation 'com.google.android.gms:play-services-ads:21.0.0'
     implementation 'com.google.android.play:review:2.0.0'
 //    implementation files('/Users/andykeller/Code/TheoremReach-Android-SDK/theoremreach/build/outputs/aar/theoremreach-3.5.3.aar')
-    implementation 'com.theoremreach:theoremreach:3.5.3'
+    implementation 'com.theoremreach:theoremreach:3.5.4'
 }

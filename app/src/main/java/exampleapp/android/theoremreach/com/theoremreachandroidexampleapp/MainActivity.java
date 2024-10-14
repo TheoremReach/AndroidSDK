@@ -25,11 +25,11 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
         setContentView(R.layout.activity_main);
 
         //initialize TheoremReach
-        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("5b1ef459bfc7c8e4147b766eced6", "ANDROID_TEST_ID", this);
+        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("f4bfc509292953a3cf4274038763", "ANDROID_TEST_ID", this);
 
         //customize navigation header
         TheoremReach.getInstance().setNavigationBarText("Demo App");
-        TheoremReach.getInstance().setNavigationBarColor("#211548");
+        TheoremReach.getInstance().setNavigationBarColor("#1B0C47");
         TheoremReach.getInstance().setNavigationBarTextColor("#FFFFFF");
 
         //set reward and survey status listeners
