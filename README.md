@@ -42,6 +42,9 @@ Download the latest version of the [TheoremReach Android SDK](https://github.com
 
 
 ## ChangeLog
+### v.3.5.5
+- Update bottom bar color
+
 ### v.3.5.4
 - Updated version tracking and default colors
 

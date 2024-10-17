@@ -34,5 +34,5 @@ dependencies {
     implementation 'com.google.android.gms:play-services-ads:21.0.0'
     implementation 'com.google.android.play:review:2.0.0'
 //    implementation files('/Users/andykeller/Code/TheoremReach-Android-SDK/theoremreach/build/outputs/aar/theoremreach-3.5.3.aar')
-    implementation 'com.theoremreach:theoremreach:3.5.4'
+    implementation 'com.theoremreach:theoremreach:3.5.5'
 }
