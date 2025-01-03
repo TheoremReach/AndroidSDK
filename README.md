@@ -42,6 +42,9 @@ Download the latest version of the [TheoremReach Android SDK](https://github.com
 
 
 ## ChangeLog
+### v.3.5.7
+- Added Android Photo Picker for image upload
+
 ### v.3.5.6
 - image upload support
 
