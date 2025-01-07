@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
+    namespace "exampleapp.android.theoremreach.com.theoremreachandroidexampleapp"
     compileSdkVersion 34
     defaultConfig {
         applicationId "exampleapp.android.theoremreach.com.theoremreachandroidexampleapp"
@@ -22,18 +23,20 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.preference:preference:1.2.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'androidx.appcompat:appcompat-resources:1.4.2'
+    implementation 'androidx.preference:preference:1.2.1'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'androidx.appcompat:appcompat-resources:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
+    implementation "androidx.activity:activity:1.9.3"
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
 
     implementation 'com.google.android.material:material:1.6.1'
-    implementation 'com.google.android.gms:play-services-base:18.1.0'
-    implementation 'com.google.android.gms:play-services-auth:20.2.0'
+    implementation 'com.google.android.gms:play-services-base:18.5.0'
+    implementation 'com.google.android.gms:play-services-auth:21.3.0'
     implementation 'com.google.android.gms:play-services-ads:21.0.0'
     implementation 'com.google.android.play:review:2.0.0'
-//    implementation files('/Users/andykeller/Code/TheoremReach-Android-SDK/theoremreach/build/outputs/aar/theoremreach-3.5.3.aar')
-    implementation 'com.theoremreach:theoremreach:3.5.6'
+//    implementation files('/Users/zia954/android_dev/AndroidSDK/theoremreach-3.5.7.aar')
+    implementation 'com.theoremreach:theoremreach:3.5.7'
 //    implementation project(':theoremreach')
 }
