@@ -49,8 +49,8 @@ Download the latest version of the [TheoremReach Android SDK](https://github.com
 - Two new dependencies are added:
 
   ```groovy
-    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.2.0'
     implementation "androidx.activity:activity:1.9.3"
+    implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
       
   ```
 
