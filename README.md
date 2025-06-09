@@ -42,6 +42,9 @@ Download the latest version of the [TheoremReach Android SDK](https://github.com
 
 
 ## ChangeLog
+### v.3.5.8
+- Updated Gradle to version 8.1.0
+
 ### v.3.5.7
 - Added Android Photo Picker for image upload
 - Upgraded gradle to 7.0.4 with distribution URL https://services.gradle.org/distributions/gradle-7.2-bin.zip (Note: This is the minimum Gradle Version Needed, Recommended Version is 8.0.2 with distribution URL https://services.gradle.org/distributions/gradle-8.0-bin.zip )
