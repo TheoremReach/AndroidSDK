@@ -20,9 +20,14 @@ Add the following to the repositories closure of the app's module `build.gradle`
 
   ```groovy
     dependencies {
+      implementation 'androidx.preference:preference:1.2.1'
+      implementation 'androidx.preference:preference-ktx:1.2.1'
+      implementation 'androidx.appcompat:appcompat:1.5.1'
+      implementation 'com.google.android.gms:play-services-base:18.5.0'
+      implementation 'com.google.android.gms:play-services-auth:21.3.0'
+      implementation "androidx.activity:activity:1.9.3"
+      implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
       implementation 'com.theoremreach:theoremreach:x.x.x'
-      implementation 'com.google.android.gms:play-services-ads:21.0.0'
-      implementation 'androidx.appcompat:appcompat:1.4.2'
       ...
      }
   ```
