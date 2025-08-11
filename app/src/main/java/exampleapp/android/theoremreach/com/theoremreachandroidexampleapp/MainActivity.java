@@ -1,6 +1,5 @@
 package exampleapp.android.theoremreach.com.theoremreachandroidexampleapp;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,9 +13,8 @@ import theoremreach.com.theoremreach.TheoremReachSurveyAvailableListener;
 import theoremreach.com.theoremreach.TheoremReachSurveyListener;
 
 public class MainActivity extends AppCompatActivity implements TheoremReachRewardListener, TheoremReachSurveyListener, TheoremReachSurveyAvailableListener {
-
     Button takeSurveyButton;
-
+    Boolean launched = false;
     private final String TAG = "TheoremReach";
 
     @Override
@@ -25,34 +23,47 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
         setContentView(R.layout.activity_main);
 
         //initialize TheoremReach
-        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("f4bfc509292953a3cf4274038763", "ANDROID_TEST_ID", this);
-
-        //customize navigation header
-        TheoremReach.getInstance().setNavigationBarText("Demo App");
-        TheoremReach.getInstance().setNavigationBarColor("#1B0C47");
-        TheoremReach.getInstance().setNavigationBarTextColor("#FFFFFF");
-
-        //set reward and survey status listeners
-        TheoremReach.getInstance().setTheoremReachRewardListener(this);
-        TheoremReach.getInstance().setTheoremReachSurveyListener(this);
-        TheoremReach.getInstance().setTheoremReachSurveyAvailableListener(this);
-//        TheoremReach.getInstance().disableAppButtons(true);
+//        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("f4bfc509292953a3cf4274038763", "ANDROID_TEST_ID", this);
+//
+//        //customize navigation header
+//        TheoremReach.getInstance().setNavigationBarText("Demo App");
+//        TheoremReach.getInstance().setNavigationBarColor("#1B0C47");
+//        TheoremReach.getInstance().setNavigationBarTextColor("#FFFFFF");
+//
+//        //set reward and survey status listeners
+//        TheoremReach.getInstance().setTheoremReachRewardListener(this);
+//        TheoremReach.getInstance().setTheoremReachSurveyListener(this);
+//        TheoremReach.getInstance().setTheoremReachSurveyAvailableListener(this);
 
         takeSurveyButton = (Button) findViewById(R.id.takeSurveyButton);
         takeSurveyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TheoremReach.getInstance().getIsSurveyAvailable()) {
-                    // for second placement to earn Gems as well as Tokens
-//                    TheoremReach.getInstance().showRewardCenter("66cb0225-3af3-4d63-8920-7a7a9e43abb2");
+                MainActivity parentActivity = MainActivity.this;
+                //initialize TheoremReach
+                TheoremReach.initWithApiKeyAndUserIdAndActivityContext("884e30650fc43197d10813ff8e68", "ANDROID_TEST_ID", parentActivity);
+
+                //customize navigation header
+                TheoremReach.getInstance().setNavigationBarText("Demo App");
+                TheoremReach.getInstance().setNavigationBarColor("#1B0C47");
+                TheoremReach.getInstance().setNavigationBarTextColor("#FFFFFF");
+
+                //set reward and survey status listeners
+                TheoremReach.getInstance().setTheoremReachRewardListener(parentActivity);
+                TheoremReach.getInstance().setTheoremReachSurveyListener(parentActivity);
+                TheoremReach.getInstance().setTheoremReachSurveyAvailableListener(parentActivity);
+
+                if (launched) {
                     TheoremReach.getInstance().showRewardCenter();
                 }
 
+//                TheoremReach.getInstance().showRewardCenter();
+//                if (TheoremReach.getInstance().getIsSurveyAvailable()) {
+//                    // for second placement to earn Gems as well as Tokens
+//                    TheoremReach.getInstance().showRewardCenter();
+//                }
             }
         });
-
-//        TheoremReach.getInstance().showRewardCenter();
-
     }
 
     @Override
@@ -86,6 +97,10 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
     @Override
     public void theoremreachSurveyAvailable(boolean surveyAvailable) {
         Log.d(TAG, "TheoremReach Survey Available: " + surveyAvailable);
-    }
 
+        if (!launched) {
+            TheoremReach.getInstance().showRewardCenter();
+            launched = true;
+        }
+    }
 }
