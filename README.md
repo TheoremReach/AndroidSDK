@@ -47,6 +47,9 @@ Download the latest version of the [TheoremReach Android SDK](https://github.com
 
 
 ## ChangeLog
+### v.3.6.0
+- Added support for Android 16 edge-to-edge
+
 ### v.3.5.8
 - Updated Gradle to version 8.1.0
 
