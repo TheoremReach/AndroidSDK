@@ -53,14 +53,21 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
                 TheoremReach.getInstance().setTheoremReachSurveyListener(parentActivity);
                 TheoremReach.getInstance().setTheoremReachSurveyAvailableListener(parentActivity);
 
+                // Subsequent clicks after surveyAvailable callback
                 if (launched) {
                     TheoremReach.getInstance().showRewardCenter();
                 }
 
+                // Basic showRewardCenter
 //                TheoremReach.getInstance().showRewardCenter();
+
+                // Check if surveys are available first
 //                if (TheoremReach.getInstance().getIsSurveyAvailable()) {
 //                    // for second placement to earn Gems as well as Tokens
+////                    TheoremReach.getInstance().showRewardCenter("66cb0225-3af3-4d63-8920-7a7a9e43abb2");
 //                    TheoremReach.getInstance().showRewardCenter();
+//                } else {
+//                    // Handle case where no surveys are available for the user
 //                }
             }
         });
@@ -81,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
     @Override
     public void onReward(int i) {
         Log.d(TAG, "onReward: " + i);
-
     }
 
     @Override
@@ -98,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
     public void theoremreachSurveyAvailable(boolean surveyAvailable) {
         Log.d(TAG, "TheoremReach Survey Available: " + surveyAvailable);
 
+        // Use surveyAvailable callback to launch rewards center
         if (!launched) {
             TheoremReach.getInstance().showRewardCenter();
             launched = true;
