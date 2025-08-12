@@ -33,7 +33,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.6.1'
 
 //    implementation files('/Users/zia954/android_dev/AndroidSDK/theoremreach-3.5.7.aar')
-    implementation files('/Users/andykeller/Code/TheoremReach-Android-SDK/theoremreach/build/outputs/aar/theoremreach-release.aar')
-//    implementation 'com.theoremreach:theoremreach:3.5.8'
+//    implementation files('/Users/andykeller/Code/TheoremReach-Android-SDK/theoremreach/build/outputs/aar/theoremreach-release.aar')
+    implementation 'com.theoremreach:theoremreach:3.6.0'
 //    implementation project(':theoremreach')
 }
