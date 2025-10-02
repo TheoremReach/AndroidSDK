@@ -34,6 +34,6 @@ dependencies {
 
 //    implementation files('/Users/zia954/android_dev/AndroidSDK/theoremreach-3.5.7.aar')
 //    implementation files('/Users/andykeller/Code/TheoremReach-Android-SDK/theoremreach/build/outputs/aar/theoremreach-release.aar')
-    implementation 'com.theoremreach:theoremreach:3.6.2'
+    implementation 'com.theoremreach:theoremreach:3.6.5'
 //    implementation project(':theoremreach')
 }

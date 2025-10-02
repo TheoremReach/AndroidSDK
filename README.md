@@ -47,6 +47,9 @@ Download the latest version of the [TheoremReach Android SDK](https://github.com
 
 
 ## ChangeLog
+### v.3.6.5
+- Addressed webview flickering issue
+
 ### v.3.6.2
 - Removed fixed screen orientation setting
 
