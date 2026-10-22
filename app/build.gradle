@@ -32,10 +32,11 @@ dependencies {
     implementation(platform('org.jetbrains.kotlin:kotlin-bom:1.8.0'))
     implementation 'com.google.android.material:material:1.6.1'
 
-    implementation 'io.adjoe:adjoe-sdk-android:3.4.0'
+    implementation 'io.adjoe:adjoe-sdk-android:4.5.3'
 
 //    implementation files('/Users/zia954/android_dev/AndroidSDK/theoremreach-3.5.7.aar')
 //    implementation files('/Users/andykeller/Code/TheoremReach-Android-SDK/theoremreach/build/outputs/aar/theoremreach-release.aar')
-    implementation 'com.theoremreach:theoremreach:3.6.10'
+    // The SDK's feat/mmp-release build (3.7.0), for round 1's device checks, until it's on Maven Central.
+    implementation files('libs/theoremreach-3.7.0.aar')
 //    implementation project(':theoremreach')
 }
