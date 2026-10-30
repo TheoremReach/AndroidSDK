@@ -33,7 +33,7 @@ jobs:
   tag:
     name: Check the AAR and tag (dry run unless unticked)
     if: github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     timeout-minutes: 10
     concurrency:
       group: release
@@ -69,14 +69,17 @@ jobs:
               exit 1
             fi
           done
-          tagged=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$VERSION" --jq '.object.type + " " + .object.sha' 2> /dev/null || true)
+          # The tag, if there is one. matching-refs answers [] for none, where a lookup by name answers a 404 body; a
+          # call that fails fails the step.
+          tagged=$(gh api "repos/$GITHUB_REPOSITORY/git/matching-refs/tags/$VERSION" \
+            --jq '.[] | select(.ref == "refs/tags/" + env.VERSION) | .object.type + " " + .object.sha')
           if [ -n "$tagged" ]; then
             tagged_commit=${tagged#* }
             if [ "${tagged%% *}" = tag ]; then
               tagged_commit=$(gh api "repos/$GITHUB_REPOSITORY/git/tags/$tagged_commit" --jq .object.sha)
             fi
             if [ "$tagged_commit" != "$GITHUB_SHA" ]; then
-              echo "::error::The tag $VERSION names $tagged_commit, not this run's commit"
+              echo "::error::The tag $VERSION names $tagged_commit, not this run's commit. If nothing was released from that commit, delete the tag and run again."
               exit 1
             fi
             echo "The tag $VERSION names this commit already (a run that didn't finish)"
