@@ -5,6 +5,8 @@ name: Release (tag the AAR)
 # released, the one Maven Central's release was built from, so a tag can't point at an earlier build. A dry run, the
 # default, checks and doesn't tag.
 #
+# A tag already on this run's commit is taken as this release's, so the job can run again.
+#
 # The push trigger only registers the workflow, so it can be dispatched on a branch before it reaches master. Its job
 # runs on dispatch alone.
 on:
@@ -24,10 +26,6 @@ on:
     paths:
       - .github/workflows/release.yml
 
-concurrency:
-  group: release
-  cancel-in-progress: false
-
 permissions:
   contents: read
 
@@ -35,22 +33,30 @@ jobs:
   tag:
     name: Check the AAR and tag (dry run unless unticked)
     if: github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
+    concurrency:
+      group: release
+      cancel-in-progress: false
     permissions:
-      contents: write # the version tag
+      contents: write # the version tag, made through the API
     env:
       VERSION: ${{ inputs.version }}
       SDK_COMMIT: ${{ inputs.sdk_commit }}
     steps:
-      - uses: actions/checkout@v7
+      # No saved credentials: only the tag's steps get a token.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
-      - uses: actions/setup-java@v6
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
         with:
           distribution: temurin
           java-version: '21'
 
       - name: Check the AAR against the release
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           for aar in theoremreach-release.aar "app/libs/theoremreach-$VERSION.aar"; do
             unzip -p "$aar" classes.jar > "$RUNNER_TEMP/classes.jar"
@@ -63,13 +69,22 @@ jobs:
               exit 1
             fi
           done
-          if git ls-remote --exit-code --tags origin "refs/tags/$VERSION" > /dev/null; then
-            echo "::error::The tag $VERSION exists already"
-            exit 1
+          tagged=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$VERSION" --jq '.object.type + " " + .object.sha' 2> /dev/null || true)
+          if [ -n "$tagged" ]; then
+            tagged_commit=${tagged#* }
+            if [ "${tagged%% *}" = tag ]; then
+              tagged_commit=$(gh api "repos/$GITHUB_REPOSITORY/git/tags/$tagged_commit" --jq .object.sha)
+            fi
+            if [ "$tagged_commit" != "$GITHUB_SHA" ]; then
+              echo "::error::The tag $VERSION names $tagged_commit, not this run's commit"
+              exit 1
+            fi
+            echo "The tag $VERSION names this commit already (a run that didn't finish)"
+            echo "ALREADY_TAGGED=true" >> "$GITHUB_ENV"
           fi
 
       - name: Tag the commit
-        if: inputs.dry_run == false
-        run: |
-          git tag "$VERSION" "$GITHUB_SHA"
-          git push origin "refs/tags/$VERSION"
+        if: inputs.dry_run == false && env.ALREADY_TAGGED != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/tags/$VERSION" -f sha="$GITHUB_SHA" --jq .ref
