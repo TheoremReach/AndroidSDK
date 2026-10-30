@@ -24,19 +24,28 @@ Add the following to the repositories closure of the app's module `build.gradle`
       implementation 'androidx.preference:preference-ktx:1.2.1'
       implementation 'androidx.appcompat:appcompat:1.5.1'
       implementation 'com.google.android.gms:play-services-base:18.5.0'
-      implementation 'com.google.android.gms:play-services-auth:21.3.0'
+      implementation 'androidx.credentials:credentials:1.5.0'
+      implementation 'androidx.credentials:credentials-play-services-auth:1.5.0'
+      implementation 'com.google.android.libraries.identity.googleid:googleid:1.1.1'
       implementation "androidx.activity:activity:1.9.3"
       implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
+      implementation 'com.google.android.material:material:1.6.1'
+      implementation 'com.google.android.play:review:2.0.2'
       implementation 'com.theoremreach:theoremreach:x.x.x'
       ...
      }
   ```
 
-  And sync the gradle project files
+  And sync the gradle project files. From 3.7.0 the app compiles against API 35 or later (`compileSdk 35`), as Google
+  Play already requires of app updates.
 
 ### Manual:
 
 Download the latest version of the [TheoremReach Android SDK](https://github.com/theoremreach/AndroidSDK) and drop **theoremreach.x.x.x.aar** to the lib folder. Ensure that Google Plays Ads are enabled in your app.
+
+An AAR added by hand brings none of its dependencies, so add the ones listed above, other than
+`com.theoremreach:theoremreach`, yourself. Without the three Credential Manager libraries (`androidx.credentials` and
+`googleid`), Google sign-in shows the wall's error message.
 
 
 ## Other platforms:
@@ -47,6 +56,28 @@ Download the latest version of the [TheoremReach Android SDK](https://github.com
 
 
 ## ChangeLog
+### v.3.7.0
+- Google sign-in goes through Credential Manager (androidx.credentials 1.5.0, googleid 1.1.1). play-services-auth is
+  no longer a dependency, so an app can use play-services-auth 22, which removed the legacy sign-in client that 3.6
+  called on every wall open. The app compiles against API 35 or later, as Google Play already requires. An app that
+  adds the AAR by hand adds the three libraries (see Manual, above).
+- Ads open in the browser, not in the reward center
+- A thin loading bar replaces the loading spinner. `setLoadingBarColor` sets its color, #FC178D by default
+- `setMmpInstallId(provider, installId)` passes the install id a mobile measurement partner, such as Apptrove, gave the
+  install to the reward center. Call it before the first `showRewardCenter`
+- Callbacks arrive on the main thread, so move network or other long work in them off it. A reward is confirmed only
+  after `onReward` returns. An exception a listener throws is logged, and the reward comes again after the app
+  restarts or with the next new reward, as in 3.6
+- `getRewardCenterActivity()` returns null once the reward center is closed
+- User ids are sent percent-encoded, so ids with +, &, ; or # arrive intact
+- The color setters ignore an invalid color and keep the previous one. They take #RGB, #ARGB, #RRGGBB and #AARRGGBB,
+  with or without the #
+- Playtime needs adjoe 4.3 to 4.5, and `setPlaytimeSdkHash` sets adjoe's SDK hash. An app that turns Playtime on
+  without adjoe 4.3 to 4.5 no longer crashes: the wall hears that no games are available
+- A dark mode change or a rotation keeps the reward center open, and it comes back after Android restores the app's
+  process
+- mailto:, market: and intent: links open their apps
+
 ### v.3.6.10
 - Miscellaneous updates
 

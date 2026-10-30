@@ -28,6 +28,17 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v6
 
+      # Which SDK build the repo ships, for the example app and for apps that add the AAR by hand: each names its
+      # version and the commit it was built from.
+      - name: Show the SDK build
+        run: |
+          for aar in theoremreach-release.aar app/libs/theoremreach-3.7.0.aar; do
+            unzip -p "$aar" classes.jar > "$RUNNER_TEMP/classes.jar"
+            echo "$aar:"
+            javap -constants -cp "$RUNNER_TEMP/classes.jar" theoremreach.com.theoremreach.BuildConfig \
+              | grep -E ' (VERSION_NAME|SOURCE_COMMIT) =' || true
+          done
+
       - name: Build the release APK and lint it, and build a debug APK
         run: ./gradlew --console=plain assembleRelease lintRelease assembleDebug
 
