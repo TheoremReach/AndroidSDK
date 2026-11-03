@@ -58,14 +58,18 @@ An AAR added by hand brings none of its dependencies, so add the ones listed abo
 ### v.3.7.0
 - Google sign-in goes through Credential Manager (androidx.credentials 1.5.0, googleid 1.1.1). play-services-auth is
   no longer a direct dependency, so an app can use play-services-auth 22, which removed the legacy sign-in client that
-  3.6 called on every wall open. The app compiles against API 35 or later. An app that
-  adds the AAR by hand adds the three libraries (see Manual, above). A respondent who backs out of Google's sheet no
-  longer gets the wall's error message
+  3.6 called on every wall open. The app compiles against API 35 or later. An app that adds the AAR by hand adds the
+  three libraries (see Manual, above). A respondent who backs out of Google's sheet no longer gets the wall's error
+  message
 - Ads open in the browser, not in the reward center. On Android 6, only an ad that opens a new window does
 - A thin loading bar replaces the loading spinner. `setLoadingBarColor` sets its color, #FC178D by default
 - On Android 8 and later, if the WebView's renderer process dies (a crash, or the system freeing memory), the reward
   center loads the wall again instead of the app being killed with it. Away from the reward center, it loads when the
   respondent comes back
+- "Unexpected Error", for a page that can't load, offers Close beside Try Again, as on iOS
+- On Fire tablets, closing the reward center no longer crashes the app when the SDK hasn't reached TheoremReach yet
+  (offline, or after Android ends the app's process). While the respondent limits ad tracking, rewards are checked when
+  the app starts, not only after the reward center closes
 - `setMmpInstallId(provider, installId)` passes the install id a mobile measurement partner, such as Apptrove, gave the
   install to the reward center. Call it before the first `showRewardCenter`
 - `onReward`, the survey-available callback and `onSessionIdSet` arrive on the main thread, so move network or other
