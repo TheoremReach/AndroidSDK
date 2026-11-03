@@ -36,8 +36,7 @@ Add the following to the repositories closure of the app's module `build.gradle`
      }
   ```
 
-  And sync the gradle project files. From 3.7.0 the app compiles against API 35 or later (`compileSdk 35`), as Google
-  Play already requires of app updates.
+  And sync the gradle project files. From 3.7.0 the app compiles against API 35 or later (`compileSdk 35`).
 
 ### Manual:
 
