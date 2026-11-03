@@ -59,7 +59,7 @@ An AAR added by hand brings none of its dependencies, so add the ones listed abo
 ### v.3.7.0
 - Google sign-in goes through Credential Manager (androidx.credentials 1.5.0, googleid 1.1.1). play-services-auth is
   no longer a direct dependency, so an app can use play-services-auth 22, which removed the legacy sign-in client that
-  3.6 called on every wall open. The app compiles against API 35 or later, as Google Play already requires. An app that
+  3.6 called on every wall open. The app compiles against API 35 or later. An app that
   adds the AAR by hand adds the three libraries (see Manual, above). A respondent who backs out of Google's sheet no
   longer gets the wall's error message
 - Ads open in the browser, not in the reward center. On Android 6, only an ad that opens a new window does
@@ -81,7 +81,8 @@ An AAR added by hand brings none of its dependencies, so add the ones listed abo
   error
 - A dark mode change or a rotation keeps the reward center open, and a language change rebuilds it. After Android ends
   the app's process, it closes, as in 3.6
-- Links to other apps (mailto:, market:, intent: and an app's own scheme) open in the app that takes them
+- Links to other apps (mailto:, market:, intent: and an app's own scheme) open in the app that takes them. Links to
+  your app's own schemes don't
 
 ### v.3.6.10
 - Miscellaneous updates
