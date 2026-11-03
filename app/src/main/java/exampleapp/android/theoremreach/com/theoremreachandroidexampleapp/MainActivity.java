@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
             public void onClick(View v) {
                 MainActivity parentActivity = MainActivity.this;
                 //initialize TheoremReach
-                TheoremReach.initWithApiKeyAndUserIdAndActivityContext("884e30650fc43197d10813ff8e68", "ANDROID_TEST_ID", parentActivity);
+                TheoremReach.initWithApiKeyAndUserIdAndActivityContext("f4bfc509292953a3cf4274038763", "ANDROID_TEST_ID", parentActivity);
 
                 //customize navigation header
                 TheoremReach.getInstance().setNavigationBarText("Demo App");
