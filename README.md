@@ -64,6 +64,9 @@ An AAR added by hand brings none of its dependencies, so add the ones listed abo
   longer gets the wall's error message
 - Ads open in the browser, not in the reward center. On Android 6, only an ad that opens a new window does
 - A thin loading bar replaces the loading spinner. `setLoadingBarColor` sets its color, #FC178D by default
+- On Android 8 and later, if the WebView's renderer process dies (a crash, or the system freeing memory), the reward
+  center loads the wall again instead of the app being killed with it. Away from the reward center, it loads when the
+  respondent comes back
 - `setMmpInstallId(provider, installId)` passes the install id a mobile measurement partner, such as Apptrove, gave the
   install to the reward center. Call it before the first `showRewardCenter`
 - `onReward`, the survey-available callback and `onSessionIdSet` arrive on the main thread, so move network or other
