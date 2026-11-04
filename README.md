@@ -155,3 +155,7 @@ An AAR added by hand brings none of its dependencies, so add the ones listed abo
 
 ### v3.3.5
 - Adding placements for additional flexibility
+
+## License
+
+The TheoremReach SDK is licensed under the [TheoremReach Publisher Terms and Conditions](https://info.theoremreach.com/terms-of-service/); see [LICENSE](LICENSE). The example app's code, in `app/`, is under the MIT License ([its LICENSE](app/LICENSE)).
