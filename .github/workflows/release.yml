@@ -1,0 +1,93 @@
+name: Release (tag the AAR)
+
+# On demand only. Tags the commit holding the SDK's AAR, the one apps add by hand and the example app builds on. Before
+# tagging, the job checks that both copies are the version being released and were built from the SDK commit being
+# released, the one Maven Central's release was built from, so a tag can't point at an earlier build. A dry run, the
+# default, checks and doesn't tag.
+#
+# A tag already on this run's commit is taken as this release's, so the job can run again.
+#
+# The push trigger only registers the workflow, so it can be dispatched on a branch before it reaches master. Its job
+# runs on dispatch alone.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: The version to release, which the AAR must declare (BuildConfig.VERSION_NAME)
+        required: true
+      sdk_commit:
+        description: The TheoremReach-Android-SDK commit the release was built from (its full SHA)
+        required: true
+      dry_run:
+        description: Dry run (check, don't tag)
+        type: boolean
+        default: true
+  push:
+    paths:
+      - .github/workflows/release.yml
+
+permissions:
+  contents: read
+
+jobs:
+  tag:
+    name: Check the AAR and tag (dry run unless unticked)
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-26.04
+    timeout-minutes: 10
+    concurrency:
+      group: release
+      cancel-in-progress: false
+    permissions:
+      contents: write # the version tag, made through the API
+    env:
+      VERSION: ${{ inputs.version }}
+      SDK_COMMIT: ${{ inputs.sdk_commit }}
+    steps:
+      # No saved credentials: only the tag's steps get a token.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Check the AAR against the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for aar in theoremreach-release.aar "app/libs/theoremreach-$VERSION.aar"; do
+            unzip -p "$aar" classes.jar > "$RUNNER_TEMP/classes.jar"
+            constants=$(javap -constants -cp "$RUNNER_TEMP/classes.jar" theoremreach.com.theoremreach.BuildConfig)
+            built_version=$(sed -n 's/.* VERSION_NAME = "\(.*\)";/\1/p' <<< "$constants")
+            built_from=$(sed -n 's/.* SOURCE_COMMIT = "\(.*\)";/\1/p' <<< "$constants")
+            echo "$aar: $built_version, built from ${built_from:-an unrecorded commit}"
+            if [ "$built_version" != "$VERSION" ] || [ "$built_from" != "$SDK_COMMIT" ]; then
+              echo "::error::$aar is not the $VERSION build from $SDK_COMMIT"
+              exit 1
+            fi
+          done
+          # The tag, if there is one. matching-refs answers [] for none, where a lookup by name answers a 404 body; a
+          # call that fails fails the step.
+          tagged=$(gh api "repos/$GITHUB_REPOSITORY/git/matching-refs/tags/$VERSION" \
+            --jq '.[] | select(.ref == "refs/tags/" + env.VERSION) | .object.type + " " + .object.sha')
+          if [ -n "$tagged" ]; then
+            tagged_commit=${tagged#* }
+            if [ "${tagged%% *}" = tag ]; then
+              tagged_commit=$(gh api "repos/$GITHUB_REPOSITORY/git/tags/$tagged_commit" --jq .object.sha)
+            fi
+            if [ "$tagged_commit" != "$GITHUB_SHA" ]; then
+              echo "::error::The tag $VERSION names $tagged_commit, not this run's commit. If nothing was released from that commit, delete the tag and run again."
+              exit 1
+            fi
+            echo "The tag $VERSION names this commit already (a run that didn't finish)"
+            echo "ALREADY_TAGGED=true" >> "$GITHUB_ENV"
+          fi
+
+      - name: Tag the commit
+        if: inputs.dry_run == false && env.ALREADY_TAGGED != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/tags/$VERSION" -f sha="$GITHUB_SHA" --jq .ref

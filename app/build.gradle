@@ -27,15 +27,22 @@ dependencies {
     implementation 'androidx.preference:preference-ktx:1.2.1'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.gms:play-services-base:18.5.0'
-    implementation 'com.google.android.gms:play-services-auth:21.3.0'
+    // The SDK's Google sign-in, through Credential Manager.
+    implementation 'androidx.credentials:credentials:1.5.0'
+    implementation 'androidx.credentials:credentials-play-services-auth:1.5.0'
+    implementation 'com.google.android.libraries.identity.googleid:googleid:1.1.1'
     implementation 'androidx.activity:activity:1.9.3'
     implementation(platform('org.jetbrains.kotlin:kotlin-bom:1.8.0'))
     implementation 'com.google.android.material:material:1.6.1'
+    // The SDK asks for an app review through Play's in-app review.
+    implementation 'com.google.android.play:review:2.0.2'
 
-    implementation 'io.adjoe:adjoe-sdk-android:3.4.0'
+    implementation 'io.adjoe:adjoe-sdk-android:4.5.3'
 
 //    implementation files('/Users/zia954/android_dev/AndroidSDK/theoremreach-3.5.7.aar')
 //    implementation files('/Users/andykeller/Code/TheoremReach-Android-SDK/theoremreach/build/outputs/aar/theoremreach-release.aar')
-    implementation 'com.theoremreach:theoremreach:3.6.10'
+    // The SDK's 3.7.0 build, which carries none of its dependencies: they're listed above, as the README lists them for
+    // an app that adds the AAR by hand. With Maven Central's 3.7.0 they come with it.
+    implementation files('libs/theoremreach-3.7.0.aar')
 //    implementation project(':theoremreach')
 }
