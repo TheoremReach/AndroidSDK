@@ -2,7 +2,6 @@ package exampleapp.android.theoremreach.com.theoremreachandroidexampleapp;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -24,27 +23,27 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
         EdgeToEdge.enable(this);
 
         takeSurveyButton = (Button) findViewById(R.id.takeSurveyButton);
-        takeSurveyButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MainActivity parentActivity = MainActivity.this;
-                //initialize TheoremReach
-                TheoremReach.initWithApiKeyAndUserIdAndActivityContext("f4bfc509292953a3cf4274038763", "ANDROID_TEST_ID", parentActivity);
+        takeSurveyButton.setOnClickListener(v -> openRewardCenter("#1B0C47", "#FFFFFF"));
+        // The status bar's icons over the reward center follow its title bar: dark over a light one.
+        findViewById(R.id.lightTitleBarButton).setOnClickListener(v -> openRewardCenter("#F2F2F7", "#1C1C1E"));
+    }
 
-                //customize navigation header
-                TheoremReach.getInstance().setNavigationBarText("Demo App");
-                TheoremReach.getInstance().setNavigationBarColor("#1B0C47");
-                TheoremReach.getInstance().setNavigationBarTextColor("#FFFFFF");
+    private void openRewardCenter(String titleBarColor, String titleColor) {
+        //initialize TheoremReach
+        TheoremReach.initWithApiKeyAndUserIdAndActivityContext("f4bfc509292953a3cf4274038763", "ANDROID_TEST_ID", this);
 
-                //set reward and survey status listeners
-                TheoremReach.getInstance().setTheoremReachRewardListener(parentActivity);
-                TheoremReach.getInstance().setTheoremReachSurveyListener(parentActivity);
-                TheoremReach.getInstance().setTheoremReachSurveyAvailableListener(parentActivity);
-                TheoremReach.getInstance().setAdjoePlaytimeEnabled(true);
+        //customize navigation header
+        TheoremReach.getInstance().setNavigationBarText("Demo App");
+        TheoremReach.getInstance().setNavigationBarColor(titleBarColor);
+        TheoremReach.getInstance().setNavigationBarTextColor(titleColor);
 
-                TheoremReach.getInstance().showRewardCenter();
-            }
-        });
+        //set reward and survey status listeners
+        TheoremReach.getInstance().setTheoremReachRewardListener(this);
+        TheoremReach.getInstance().setTheoremReachSurveyListener(this);
+        TheoremReach.getInstance().setTheoremReachSurveyAvailableListener(this);
+        TheoremReach.getInstance().setAdjoePlaytimeEnabled(true);
+
+        TheoremReach.getInstance().showRewardCenter();
     }
 
     @Override

@@ -20,6 +20,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
+        <Button android:id="@+id/lightTitleBarButton"
+                android:layout_below="@id/takeSurveyButton"
+                android:layout_centerHorizontal="true"
+                android:text="With a light title bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
     </RelativeLayout>
 
 
