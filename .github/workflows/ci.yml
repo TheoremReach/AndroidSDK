@@ -32,7 +32,7 @@ jobs:
       # version and the commit it was built from.
       - name: Show the SDK build
         run: |
-          for aar in theoremreach-release.aar app/libs/theoremreach-3.7.0.aar; do
+          for aar in theoremreach-release.aar app/libs/theoremreach-3.7.1.aar; do
             unzip -p "$aar" classes.jar > "$RUNNER_TEMP/classes.jar"
             echo "$aar:"
             javap -constants -cp "$RUNNER_TEMP/classes.jar" theoremreach.com.theoremreach.BuildConfig \

@@ -55,6 +55,20 @@ An AAR added by hand brings none of its dependencies, so add the ones listed abo
 
 
 ## ChangeLog
+### v.3.7.1
+- The status bar's icons over the reward center follow its title: dark when the title is darker than the title bar,
+  and light when it's lighter. With a title all but invisible on the bar (an app that hides the toolbar can leave it
+  white on a light one), they follow the bar, whichever contrasts more. The gesture bar's icons do the same; 3-button
+  navigation keeps its light buttons. That's where the title bar's color is behind them, in an app drawn edge to edge
+  (Android 15 and later, for an app that targets API 35 or later)
+- A reward center the app closes from outside, by clearing its task for a notification or a deep link, or by
+  relaunching a `singleTask` main activity (React Native's and Unity's default), calls `onRewardCenterClosed` and
+  checks for rewards, as X and Back do, and its placement doesn't carry over to the next open. A Moment closed that way
+  calls `onMomentSurveyClosed`
+- A listener that throws in `onRewardCenterClosed` or `onMomentSurveyClosed` is logged, as the other listeners' are,
+  rather than ending the app
+- The example app has a second button, which opens the reward center with a light title bar and a dark title
+
 ### v.3.7.0
 - Google sign-in goes through Credential Manager (androidx.credentials 1.5.0, googleid 1.1.1). play-services-auth is
   no longer a direct dependency, so an app can use play-services-auth 22, which removed the legacy sign-in client that
