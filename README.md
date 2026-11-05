@@ -57,9 +57,10 @@ An AAR added by hand brings none of its dependencies, so add the ones listed abo
 ## ChangeLog
 ### v.3.7.1
 - The status bar's icons over the reward center follow its title: dark when the title is darker than the title bar,
-  and light when it's lighter. So do the gesture bar's; 3-button navigation keeps its light buttons. That's where the
-  title bar's color is behind them, in an app drawn edge to edge (Android 15 and later, for an app that targets API 35
-  or later)
+  and light when it's lighter. With a title all but invisible on the bar (an app that hides the toolbar can leave it
+  white on a light one), they follow the bar, whichever contrasts more. The gesture bar's icons do the same; 3-button
+  navigation keeps its light buttons. That's where the title bar's color is behind them, in an app drawn edge to edge
+  (Android 15 and later, for an app that targets API 35 or later)
 - A reward center the app closes from outside, by clearing its task for a notification or a deep link, or by
   relaunching a `singleTask` main activity (React Native's and Unity's default), calls `onRewardCenterClosed` and
   checks for rewards, as X and Back do, and its placement doesn't carry over to the next open. A Moment closed that way
