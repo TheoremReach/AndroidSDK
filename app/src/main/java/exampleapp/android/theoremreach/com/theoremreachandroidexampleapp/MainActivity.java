@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements TheoremReachRewar
 
         takeSurveyButton = (Button) findViewById(R.id.takeSurveyButton);
         takeSurveyButton.setOnClickListener(v -> openRewardCenter("#1B0C47", "#FFFFFF"));
-        // The status bar's icons over the reward center follow its title bar: dark over a light one.
+        // The status bar's icons over the reward center follow its title: dark under a dark title on a light title bar.
         findViewById(R.id.lightTitleBarButton).setOnClickListener(v -> openRewardCenter("#F2F2F7", "#1C1C1E"));
     }
 
