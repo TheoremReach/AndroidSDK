@@ -41,8 +41,8 @@ dependencies {
 
 //    implementation files('/Users/zia954/android_dev/AndroidSDK/theoremreach-3.5.7.aar')
 //    implementation files('/Users/andykeller/Code/TheoremReach-Android-SDK/theoremreach/build/outputs/aar/theoremreach-release.aar')
-    // The SDK's 3.7.1 build, which carries none of its dependencies: they're listed above, as the README lists them for
-    // an app that adds the AAR by hand. With Maven Central's 3.7.1 they come with it.
-    implementation files('libs/theoremreach-3.7.1.aar')
+    // The SDK's 3.7.2 build, which carries none of its dependencies: they're listed above, as the README lists them for
+    // an app that adds the AAR by hand. With Maven Central's 3.7.2 they come with it.
+    implementation files('libs/theoremreach-3.7.2.aar')
 //    implementation project(':theoremreach')
 }

@@ -55,6 +55,17 @@ An AAR added by hand brings none of its dependencies, so add the ones listed abo
 
 
 ## ChangeLog
+### v.3.7.2
+- The reward center and a Moment open in the app's own task. In an app whose activity has a task affinity of its own
+  (Flutter's template, since 3.22), they opened in a separate task: Home and the app's icon brought back the app with
+  the reward center behind it, and the app heard no close until the user found the reward center in Recents
+- A show while the app has no activity (it's paused, as a Unity game can be while the SDK reads the advertising ID)
+  opens nothing and calls no `onRewardCenterOpened`, so an app that pauses for the reward center isn't left waiting for
+  a close
+- A second show while the reward center is open starts it again with no second `onRewardCenterOpened`, so each open
+  has one close
+- A pause partway through a show, which Unity's show thread can meet, no longer ends the app
+
 ### v.3.7.1
 - The status bar's icons over the reward center follow its title: dark when the title is darker than the title bar,
   and light when it's lighter. With a title all but invisible on the bar (an app that hides the toolbar can leave it
